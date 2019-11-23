@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using bookstore.site.Models;
+using business.infrastructure.Repositories;
+using business.infrastructure.Operations;
 
 namespace bookstore.site.Controllers
 {
@@ -20,6 +22,12 @@ namespace bookstore.site.Controllers
 
         public IActionResult Index()
         {
+            /*var res = HttpContext.RequestServices;
+            var a = (IUserRepository)HttpContext.RequestServices.GetService(typeof(IUserRepository));
+            var a1 = a.Hello();*/
+            var b = (IUserOperation)HttpContext.RequestServices.GetService(typeof(IUserOperation));
+            var b1 = b.Hi();
+
             return View();
         }
 
