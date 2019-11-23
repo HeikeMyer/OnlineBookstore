@@ -1,8 +1,8 @@
-﻿using business.infrastructure.Interfaces;
+﻿using business.infrastructure.Entities;
 
 namespace business.entity.Entities
 {
-    public partial class User: IUser
+    public partial class User : IUser
     {
     }
 }

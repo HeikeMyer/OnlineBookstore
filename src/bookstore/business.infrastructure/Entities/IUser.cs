@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace business.infrastructure.Interfaces
+namespace business.infrastructure.Entities
 {
     public interface IUser
     {

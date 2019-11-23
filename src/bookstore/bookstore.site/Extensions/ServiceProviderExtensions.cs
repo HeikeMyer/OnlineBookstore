@@ -1,4 +1,5 @@
-﻿using business.infrastructure.Operations;
+﻿using business.entity.Entities;
+using business.infrastructure.Operations;
 using business.infrastructure.Repositories;
 using business.operation;
 using business.repository;
@@ -12,6 +13,10 @@ namespace bookstore.site.Extensions
 {
     public static class ServiceProviderExtensions
     {
+        public static void AddEntityContext(this IServiceCollection services)
+        {
+            services.AddSingleton<EntityContext>();
+        }
         public static void AddRepositoryService(this IServiceCollection services)
         {
             services.AddSingleton<IUserRepository, UserRepository>();
