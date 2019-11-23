@@ -1,8 +1,4 @@
 ﻿using business.entity;
-using business.entity.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace business.repository
 {

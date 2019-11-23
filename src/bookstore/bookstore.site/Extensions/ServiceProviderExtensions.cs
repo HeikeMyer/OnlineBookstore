@@ -1,14 +1,9 @@
-﻿using business.entity;
-using business.entity.Entities;
+﻿using Microsoft.Extensions.DependencyInjection;
+using business.entity;
 using business.infrastructure.Operations;
 using business.infrastructure.Repositories;
 using business.operation;
 using business.repository;
-using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace bookstore.site.Extensions
 {

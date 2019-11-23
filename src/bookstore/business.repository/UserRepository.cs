@@ -1,11 +1,8 @@
-﻿using business.entity;
-using business.entity.Entities;
+﻿using System;
+using System.Linq;
+using business.entity;
 using business.infrastructure.Entities;
 using business.infrastructure.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace business.repository
 {
@@ -13,22 +10,9 @@ namespace business.repository
     {
         public UserRepository(EntityContext entityContext) : base(entityContext) { }
 
-        public string Hello()
-        {
-            return "Hi, dude!";
-        }
         public IUser GetObject(Guid id)
         {
-            var a = EntityContext.User.SingleOrDefault(u => u.Id == id);
-
-            return a;
-        }
-
-        public void Add(IUser user)
-        {
-            var a = user as User;
-            EntityContext.User.Add(a);
-            EntityContext.SaveChanges();
+            return EntityContext.User.SingleOrDefault(u => u.Id == id);
         }
     }
 }
