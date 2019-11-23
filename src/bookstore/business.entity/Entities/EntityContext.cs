@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace business.entity.Entity
+namespace business.entity.Entities
 {
     public partial class EntityContext : DbContext
     {

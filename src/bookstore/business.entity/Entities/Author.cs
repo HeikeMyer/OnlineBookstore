@@ -1,21 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace business.entity.Entity
+namespace business.entity.Entities
 {
-    public partial class LiteraryWork
+    public partial class Author
     {
-        public LiteraryWork()
+        public Author()
         {
             LiteraryWorkAuthor = new HashSet<LiteraryWorkAuthor>();
-            LiteraryWorkGenre = new HashSet<LiteraryWorkGenre>();
         }
 
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public int? YearWritten { get; set; }
 
         public virtual ICollection<LiteraryWorkAuthor> LiteraryWorkAuthor { get; set; }
-        public virtual ICollection<LiteraryWorkGenre> LiteraryWorkGenre { get; set; }
     }
 }

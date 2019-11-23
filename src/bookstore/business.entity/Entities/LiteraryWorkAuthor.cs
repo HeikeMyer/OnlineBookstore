@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace business.entity.Entity
+namespace business.entity.Entities
 {
     public partial class LiteraryWorkAuthor
     {
