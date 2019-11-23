@@ -1,23 +1,16 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
+    <UserSecretsId>aspnet-bookstore.site-A2E6442B-E1D2-4CDE-85F6-0F4D1F1195A4</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\auth.identity\auth.identity.csproj" />
     <ProjectReference Include="..\business.entity\business.entity.csproj" />
     <ProjectReference Include="..\business.infrastructure\business.infrastructure.csproj" />
     <ProjectReference Include="..\business.operation\business.operation.csproj" />
     <ProjectReference Include="..\business.repository\business.repository.csproj" />
-    <ProjectReference Include="..\test\test.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
   </ItemGroup>
 
 </Project>
