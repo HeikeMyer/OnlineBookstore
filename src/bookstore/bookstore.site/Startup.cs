@@ -30,10 +30,7 @@ namespace bookstore.site
             services.AddRepositoryService();
             services.AddOperationService();
 
-            services.AddIdentity<IdentityDto, RoleDto>().AddDefaultTokenProviders();
-
-            services.AddTransient<IUserStore<IdentityDto>, UserStore>();
-            services.AddTransient<IRoleStore<RoleDto>, RoleStore>();
+            services.AddAuth();
 
             services.AddControllersWithViews();
             services.AddRazorPages();

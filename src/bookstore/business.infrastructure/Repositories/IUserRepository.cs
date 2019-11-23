@@ -7,6 +7,7 @@ namespace business.infrastructure.Repositories
     {
         IUser GetObject(Guid id);
         IUser GetObject(string login);
+        IUser GetObject(string login, string passwordHash);
         IUser Create(string login, string password, string email, string phoneNumber = null, string firstName = null, string secondName = null);
     }
 }

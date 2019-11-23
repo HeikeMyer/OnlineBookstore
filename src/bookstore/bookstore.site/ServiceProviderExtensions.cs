@@ -22,6 +22,7 @@ namespace bookstore.site.Extensions
             services.AddIdentity<IdentityDto, RoleDto>().AddDefaultTokenProviders();
             services.AddTransient<IUserStore<IdentityDto>, UserStore>();
             services.AddTransient<IRoleStore<RoleDto>, RoleStore>();
+            services.AddTransient<IAuthOperation, AuthOperation>();
         }
 
         public static void AddRepositoryService(this IServiceCollection services)

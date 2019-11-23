@@ -21,6 +21,11 @@ namespace business.repository
             return EntityContext.User.SingleOrDefault(user => user.Login == login);
         }
 
+        public IUser GetObject(string login, string passwordHash)
+        {
+            return EntityContext.User.SingleOrDefault(user => user.Login == login && user.Password == passwordHash);
+        }
+
         public IUser Create(string login, string password, string email, string phoneNumber = null, string firstName = null, string secondName = null)
         {
             var user = new User

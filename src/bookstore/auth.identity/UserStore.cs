@@ -20,9 +20,11 @@ namespace auth.identity
 
         #endregion
 
+        private Task DefaultResult => Task.FromResult<object>(null);
+
         public Task<IdentityResult> CreateAsync(IdentityDto identityDto, CancellationToken cancellationToken)
         {
-            var user = UserRepository.Create(identityDto.Login, identityDto.PasswordHash, identityDto.Email, identityDto.PhoneNumber, identityDto.FirstName, identityDto.SecondName);
+            UserRepository.Create(identityDto.Login, identityDto.PasswordHash, identityDto.Email, identityDto.PhoneNumber, identityDto.FirstName, identityDto.SecondName);
             return Task.FromResult(IdentityResult.Success);
         }
 
@@ -48,12 +50,12 @@ namespace auth.identity
         public Task<IdentityDto> FindByNameAsync(string normalizedUserName, CancellationToken cancellationToken)
         {
             var user = UserRepository.GetObject(normalizedUserName);
-            return Task.FromResult(new IdentityDto(user));
+            return Task.FromResult(user != null ? new IdentityDto(user) : null);     
         }
 
-        public Task<string> GetEmailAsync(IdentityDto user, CancellationToken cancellationToken)
+        public Task<string> GetEmailAsync(IdentityDto identityDto, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(identityDto.Email);
         }
 
         public Task<bool> GetEmailConfirmedAsync(IdentityDto user, CancellationToken cancellationToken)
@@ -78,7 +80,9 @@ namespace auth.identity
 
         public Task<string> GetUserIdAsync(IdentityDto identityDto, CancellationToken cancellationToken)
         {
-            return Task.FromResult(identityDto.UserId.ToString());
+            var user = UserRepository.GetObject(identityDto.Login, identityDto.PasswordHash);
+            //return Task.FromResult(identityDto.UserId.ToString());
+            return Task.FromResult(user?.Id.ToString());
         }
 
         public Task<string> GetUserNameAsync(IdentityDto identityDto, CancellationToken cancellationToken)
@@ -101,21 +105,22 @@ namespace auth.identity
             throw new NotImplementedException();
         }
 
-        public Task SetNormalizedEmailAsync(IdentityDto user, string normalizedEmail, CancellationToken cancellationToken)
+        public Task SetNormalizedEmailAsync(IdentityDto identityDto, string normalizedEmail, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            identityDto.Email = normalizedEmail;
+            return DefaultResult;
         }
 
-        public Task SetNormalizedUserNameAsync(IdentityDto user, string normalizedName, CancellationToken cancellationToken)
+        public Task SetNormalizedUserNameAsync(IdentityDto identityDto, string normalizedName, CancellationToken cancellationToken)
         {
-            return Task.FromResult<object>(null);
-            //throw new NotImplementedException();
+            identityDto.Login = normalizedName;
+            return DefaultResult;
         }
 
-        public Task SetPasswordHashAsync(IdentityDto user, string passwordHash, CancellationToken cancellationToken)
+        public Task SetPasswordHashAsync(IdentityDto identityDto, string passwordHash, CancellationToken cancellationToken)
         {
-            return Task.FromResult<object>(null);
-            //throw new NotImplementedException();
+            identityDto.PasswordHash = passwordHash;
+            return DefaultResult;
         }
 
         public Task SetUserNameAsync(IdentityDto user, string userName, CancellationToken cancellationToken)

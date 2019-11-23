@@ -11,6 +11,7 @@
     <ProjectReference Include="..\business.infrastructure\business.infrastructure.csproj" />
     <ProjectReference Include="..\business.operation\business.operation.csproj" />
     <ProjectReference Include="..\business.repository\business.repository.csproj" />
+    <ProjectReference Include="..\mvc.core\mvc.core.csproj" />
   </ItemGroup>
 
 </Project>

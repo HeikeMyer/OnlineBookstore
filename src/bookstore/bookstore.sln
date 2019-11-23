@@ -19,6 +19,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "auth.identity", "auth.ident
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "bookstore.site", "bookstore.site\bookstore.site.csproj", "{1699308B-DABD-4A50-9D6D-252BD4A27D79}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mvc", "mvc", "{9342C99B-00B0-4276-BEF6-F7A5682D468C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mvc.core", "mvc.core\mvc.core.csproj", "{8E1B86F6-9084-4B8D-A7F2-5C509FDEBFDC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +53,10 @@ Global
 		{1699308B-DABD-4A50-9D6D-252BD4A27D79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1699308B-DABD-4A50-9D6D-252BD4A27D79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1699308B-DABD-4A50-9D6D-252BD4A27D79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E1B86F6-9084-4B8D-A7F2-5C509FDEBFDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E1B86F6-9084-4B8D-A7F2-5C509FDEBFDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E1B86F6-9084-4B8D-A7F2-5C509FDEBFDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E1B86F6-9084-4B8D-A7F2-5C509FDEBFDC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -59,6 +67,7 @@ Global
 		{7BD19C90-87F5-4CC6-B2BC-65FBFE3E1CFC} = {D920EAFE-DE66-4385-9B76-C78AC376DC5D}
 		{3F7D57AE-6228-42C7-93D5-2D7E51354E67} = {D920EAFE-DE66-4385-9B76-C78AC376DC5D}
 		{0CE52E45-8324-4F58-A2D6-02CA7E4090C5} = {790985FE-73F0-47F7-A76E-6DA5CCF48B39}
+		{8E1B86F6-9084-4B8D-A7F2-5C509FDEBFDC} = {9342C99B-00B0-4276-BEF6-F7A5682D468C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {94BB690A-8A51-43F8-8357-5D7F6B6825D0}
