@@ -16,6 +16,8 @@ namespace business.entity
         {
             DbConfigurationOperation = dbConfigurationOperation;
             LoggerFactory = loggerFactory;
+
+            //this.Configuration.LazyLoadingEnabled = false;
         }
 
         #endregion
@@ -27,7 +29,9 @@ namespace business.entity
             if (DbConfigurationOperation.SqlProfileQuery)
                 optionsBuilder.UseLoggerFactory(LoggerFactory);
 
-            optionsBuilder.UseSqlServer(DbConfigurationOperation.ConnectionString);         
+            optionsBuilder
+                .UseLazyLoadingProxies()
+                .UseSqlServer(DbConfigurationOperation.ConnectionString);         
         }
     }
 }

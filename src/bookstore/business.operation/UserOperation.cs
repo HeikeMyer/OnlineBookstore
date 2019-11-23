@@ -4,5 +4,6 @@ namespace business.operation
 {
     public class UserOperation : IUserOperation
     {      
+        
     }
 }

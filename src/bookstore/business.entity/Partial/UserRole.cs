@@ -4,7 +4,7 @@ namespace business.entity.Entities
 {
     public partial class UserRole : IUserRole
     {
-        public IUser User 
+       /* public IUser User 
         { 
             get => UserFkNavigation;
             set => UserFkNavigation = value as User; 
@@ -13,6 +13,6 @@ namespace business.entity.Entities
         { 
             get => RoleFkNavigation; 
             set => RoleFkNavigation = value as Role; 
-        }
+        }*/
     }
 }

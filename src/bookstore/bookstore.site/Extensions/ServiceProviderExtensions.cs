@@ -17,6 +17,7 @@ namespace bookstore.site.Extensions
         public static void AddRepositoryService(this IServiceCollection services)
         {
             services.AddSingleton<IUserRepository, UserRepository>();
+            services.AddSingleton<IRoleRepository, RoleRepository>();
         }
 
         public static void AddOperationService(this IServiceCollection services)

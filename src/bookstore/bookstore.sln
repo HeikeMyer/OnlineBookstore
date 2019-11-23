@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "business.operation", "busin
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "auth", "auth", "{790985FE-73F0-47F7-A76E-6DA5CCF48B39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test", "test\test.csproj", "{4F5F8234-4670-4106-88A6-A6DDF9E10A0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "test", "test\test.csproj", "{4F5F8234-4670-4106-88A6-A6DDF9E10A0E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
