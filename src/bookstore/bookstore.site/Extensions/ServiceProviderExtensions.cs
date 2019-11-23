@@ -1,4 +1,5 @@
-﻿using business.entity.Entities;
+﻿using business.entity;
+using business.entity.Entities;
 using business.infrastructure.Operations;
 using business.infrastructure.Repositories;
 using business.operation;
@@ -15,6 +16,7 @@ namespace bookstore.site.Extensions
     {
         public static void AddEntityContext(this IServiceCollection services)
         {
+            services.AddSingleton<IDbConfigurationOperation, DbConfigurationOperation>();
             services.AddSingleton<EntityContext>();
         }
         public static void AddRepositoryService(this IServiceCollection services)
@@ -23,7 +25,7 @@ namespace bookstore.site.Extensions
         }
 
         public static void AddOperationService(this IServiceCollection services)
-        {
+        {          
             services.AddSingleton<IUserOperation, UserOperation>();
         }
     }

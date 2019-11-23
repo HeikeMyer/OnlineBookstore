@@ -1,4 +1,5 @@
-﻿using business.entity.Entities;
+﻿using business.entity;
+using business.entity.Entities;
 using business.infrastructure.Entities;
 using business.infrastructure.Repositories;
 using System;
