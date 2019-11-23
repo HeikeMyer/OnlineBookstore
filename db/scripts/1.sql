@@ -142,3 +142,23 @@ ALTER TABLE [User] ADD CONSTRAINT AK_User_Login UNIQUE([Login])
 ALTER TABLE [Country] ADD CONSTRAINT AK_Country_Abbreviation UNIQUE([Abbreviation])
 ALTER TABLE [Country] ADD CONSTRAINT AK_Country_Name UNIQUE([Name])
 ALTER TABLE [Genre] ADD CONSTRAINT AK_Genre_Name UNIQUE([Name]) 
+
+
+ALTER TABLE [User] ADD Created datetime not null DEFAULT GETDATE();
+ALTER TABLE [User] ADD Modified datetime not null DEFAULT GETDATE();
+
+CREATE TABLE dbo.Role (
+	Id uniqueidentifier NOT NULL PRIMARY KEY,
+	Name varchar(50) UNIQUE NOT NULL,
+	Code varchar(50) UNIQUE NOT NULL
+);
+
+CREATE TABLE dbo.UserRole (
+	Id uniqueidentifier NOT NULL PRIMARY KEY,
+	UserFk uniqueidentifier FOREIGN KEY REFERENCES [User](Id) NOT NULL,
+	RoleFk uniqueidentifier FOREIGN KEY REFERENCES Role(Id) NOT NULL,
+	Created datetime not null DEFAULT GETDATE(),
+	Modified datetime not null DEFAULT GETDATE()
+);
+
+ALTER TABLE UserRole ADD CONSTRAINT AK_UserRole_UserFk_RoleFk UNIQUE(UserFk, RoleFk) 

@@ -8,6 +8,7 @@ namespace business.entity.Entities
         public User()
         {
             Address = new HashSet<Address>();
+            UserRole = new HashSet<UserRole>();
         }
 
         public Guid Id { get; set; }
@@ -17,7 +18,10 @@ namespace business.entity.Entities
         public string PhoneNumber { get; set; }
         public string FirstName { get; set; }
         public string SecondName { get; set; }
+        public DateTime Created { get; set; }
+        public DateTime Modified { get; set; }
 
         public virtual ICollection<Address> Address { get; set; }
+        public virtual ICollection<UserRole> UserRole { get; set; }
     }
 }
