@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.Logging;
 
 namespace business.entity.Entities
 {
@@ -25,12 +26,17 @@ namespace business.entity.Entities
         public virtual DbSet<LiteraryWorkGenre> LiteraryWorkGenre { get; set; }
         public virtual DbSet<User> User { get; set; }
 
+        public static readonly Microsoft.Extensions.Logging.LoggerFactory _myLoggerFactory =
+            new LoggerFactory(new[] {new Microsoft.Extensions.Logging.Debug.DebugLoggerProvider()});
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-CBOTULA;Database=bookshop.com;User Id=bookshop.com;Password={0BA77AF7-8FEA-48FB-9FD3-9886D343DAAE};");
+                optionsBuilder
+                    .UseLoggerFactory(_myLoggerFactory)
+                    .UseSqlServer("Server=DESKTOP-CBOTULA;Database=bookshop.com;User Id=bookshop.com;Password={0BA77AF7-8FEA-48FB-9FD3-9886D343DAAE};");
             }
         }
 

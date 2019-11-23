@@ -9,5 +9,7 @@ namespace business.infrastructure.Repositories
     {
         string Hello();
         IUser GetObject(Guid id);
+
+        void Add(IUser user);
     }
 }

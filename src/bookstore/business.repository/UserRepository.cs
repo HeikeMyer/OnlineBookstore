@@ -22,5 +22,12 @@ namespace business.repository
 
             return a;
         }
+
+        public void Add(IUser user)
+        {
+            var a = user as User;
+            EntityContext.User.Add(a);
+            EntityContext.SaveChanges();
+        }
     }
 }
