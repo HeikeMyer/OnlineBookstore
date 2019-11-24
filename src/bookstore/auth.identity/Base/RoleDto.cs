@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace auth.identity
+namespace auth.identity.Base
 {
     public class RoleDto
     {

@@ -168,3 +168,12 @@ INSERT INTO Role VALUES
 	('{61C3FF7E-C16F-4BAD-9B10-D28AEFFDF0B0}', 'Administrator', 'ADMINISTRATOR'),
 	('{3230E51D-020A-4644-9152-21B82BF54219}', 'Storekeeper', 'STOREKEEPER'),
 	('{DBADFFB7-6AF4-4558-AD17-D66FCB1D578D}', 'OrderMananager', 'ORDER_MANAGER')
+
+
+EXEC sp_rename 'dbo.User.Password', 'PasswordHash', 'COLUMN';
+
+ALTER TABLE [User] ADD NormalizedLogin varchar(100) DEFAULT '';
+ALTER TABLE [User] ADD NormalizedEmail varchar(100) DEFAULT '';
+
+ALTER TABLE [User] ADD CONSTRAINT AK_User_NormalizedLogin UNIQUE(NormalizedLogin)
+ALTER TABLE [User] ADD CONSTRAINT AK_User_NormalizedEmail UNIQUE(NormalizedEmail)

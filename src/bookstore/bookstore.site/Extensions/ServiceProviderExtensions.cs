@@ -1,11 +1,13 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
+using auth.identity.Base;
+using auth.identity.Interfaces;
+using auth.identity.Operations;
 using business.entity;
 using business.infrastructure.Operations;
 using business.infrastructure.Repositories;
 using business.operation;
 using business.repository;
-using auth.identity;
-using Microsoft.AspNetCore.Identity;
 
 namespace bookstore.site.Extensions
 {

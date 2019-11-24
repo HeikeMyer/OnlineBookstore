@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace auth.identity
+namespace auth.identity.Base
 {
     public class RoleStore : IRoleStore<RoleDto>
     {

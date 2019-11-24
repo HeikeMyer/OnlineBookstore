@@ -16,24 +16,26 @@ namespace business.repository
             return EntityContext.User.Find(id);
         }
 
-        public IUser GetObject(string login)
+        public IUser GetObject(string normalizedLogin)
         {
-            return EntityContext.User.SingleOrDefault(user => user.Login == login);
+            return EntityContext.User.SingleOrDefault(user => user.NormalizedLogin == normalizedLogin);
         }
 
-        public IUser GetObject(string login, string passwordHash)
+        public IUser GetObject(string normalizedLogin, string passwordHash)
         {
-            return EntityContext.User.SingleOrDefault(user => user.Login == login && user.PasswordHash == passwordHash);
+            return EntityContext.User.SingleOrDefault(user => user.NormalizedLogin == normalizedLogin && user.PasswordHash == passwordHash);
         }
 
-        public IUser Create(string login, string password, string email, string phoneNumber = null, string firstName = null, string secondName = null)
+        public IUser Create(string login, string normalizedLogin, string password, string email, string normalizedEmail, string phoneNumber = null, string firstName = null, string secondName = null)
         {
             var user = new User
             {
                 Id = Guid.NewGuid(),
                 Login = login,
+                NormalizedLogin = normalizedLogin,
                 PasswordHash = password,
                 Email = email,
+                NormalizedEmail = normalizedEmail,
                 PhoneNumber = phoneNumber,
                 FirstName = firstName,
                 SecondName = secondName
