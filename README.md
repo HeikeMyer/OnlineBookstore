@@ -8,7 +8,8 @@
 * ЛР 3 
   * docs/UseCases.docx
 * ЛР 4.1 
-  * src/bookstore
+  * UML class diagram: docs/ClassDiagram.png
+  * Project: src/bookstore/...
 * ЛР 4.2 
   * IDEF1X: docs/DBScheme_IDEF1X.dbd, docs/DBScheme_IDEF1X.png
   * DDL scripts: db/scripts/DDLScripts.sql
