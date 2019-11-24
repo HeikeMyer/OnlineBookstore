@@ -209,13 +209,15 @@ CREATE TABLE [dbo].[PaymentMethod]
 	[Code] varchar(50) UNIQUE NOT NULL
 );
 
-CREATE TABLE [dbo].[PaymentStatus] (
+CREATE TABLE [dbo].[PaymentStatus] 
+(
 	[Id] uniqueidentifier PRIMARY KEY NOT NULL,
 	[Name] varchar(50) NOT NULL,
 	[Code] varchar(50) UNIQUE NOT NULL
 );
 
-CREATE TABLE [dbo].[Payment] (
+CREATE TABLE [dbo].[Payment] 
+(
 	[Id] uniqueidentifier PRIMARY KEY NOT NULL,
 	[UserFk] uniqueidentifier FOREIGN KEY REFERENCES [dbo].[User]([Id]) NOT NULL,
 	[PaymentMethodFk] uniqueidentifier FOREIGN KEY REFERENCES [dbo].[PaymentMethod]([Id]) NOT NULL,
@@ -224,7 +226,8 @@ CREATE TABLE [dbo].[Payment] (
 	[Updated] datetime NOT NULL DEFAULT GETDATE()
 );
 
-CREATE TABLE [dbo].[Basket] (
+CREATE TABLE [dbo].[Basket] 
+(
 	[Id] uniqueidentifier PRIMARY KEY NOT NULL,
 	[UserFk] uniqueidentifier FOREIGN KEY REFERENCES [dbo].[User]([Id]) NOT NULL,
 	[PaymentFk] uniqueidentifier FOREIGN KEY REFERENCES [dbo].[Payment]([Id]),
@@ -236,7 +239,8 @@ CREATE TABLE [dbo].[Basket] (
 	[IsDeleted] bit NOT NULL DEFAULT 0
 );
 
-CREATE TABLE dbo.Purchase (
+CREATE TABLE [dbo].[Purchase] 
+(
 	[Id] uniqueidentifier PRIMARY KEY NOT NULL,
 	[UserFk] uniqueidentifier FOREIGN KEY REFERENCES [dbo].[User]([Id]) NOT NULL,
 	[BasketFk] uniqueidentifier FOREIGN KEY REFERENCES [dbo].[Basket]([Id]),	
