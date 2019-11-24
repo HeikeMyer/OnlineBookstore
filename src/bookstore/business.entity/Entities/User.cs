@@ -20,6 +20,8 @@ namespace business.entity.Entities
         public string SecondName { get; set; }
         public DateTime Created { get; set; }
         public DateTime Modified { get; set; }
+        public string NormalizedLogin { get; set; }
+        public string NormalizedEmail { get; set; }
 
         public virtual ICollection<Address> Address { get; set; }
         public virtual ICollection<UserRole> UserRole { get; set; }

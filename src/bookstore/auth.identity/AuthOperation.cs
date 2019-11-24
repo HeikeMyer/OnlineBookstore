@@ -36,12 +36,12 @@ namespace auth.identity
 
         public void Test()
         {
-            var p = "ptktYsq678_Kbcn";
+            var p = "Audrey_1315";
             
 
             var dto = new IdentityDto
             {
-                Login = "heike.myer",
+                Login = "admin",
                 Email = "abcd832@gmail.com",
                 FirstName = "Heike",
                 SecondName = "Myer"
