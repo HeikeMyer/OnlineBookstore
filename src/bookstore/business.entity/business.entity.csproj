@@ -5,6 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="E1\**" />
+    <Compile Remove="Entities - Copy\**" />
+    <EmbeddedResource Remove="E1\**" />
+    <EmbeddedResource Remove="Entities - Copy\**" />
+    <None Remove="E1\**" />
+    <None Remove="Entities - Copy\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.0.0">
       <PrivateAssets>all</PrivateAssets>
@@ -17,6 +26,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\business.infrastructure\business.infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Entities\" />
   </ItemGroup>
 
 </Project>

@@ -16,8 +16,6 @@ namespace business.entity
         {
             DbConfigurationOperation = dbConfigurationOperation;
             LoggerFactory = loggerFactory;
-
-            //this.Configuration.LazyLoadingEnabled = false;
         }
 
         #endregion

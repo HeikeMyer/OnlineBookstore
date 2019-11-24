@@ -7,6 +7,7 @@ namespace business.entity.Entities
     {
         public Country()
         {
+            Address = new HashSet<Address>();
             City = new HashSet<City>();
         }
 
@@ -14,6 +15,7 @@ namespace business.entity.Entities
         public string Name { get; set; }
         public string Abbreviation { get; set; }
 
+        public virtual ICollection<Address> Address { get; set; }
         public virtual ICollection<City> City { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace business.entity.Entities
 
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public Guid? CountryFk { get; set; }
+        public Guid CountryFk { get; set; }
 
         public virtual Country CountryFkNavigation { get; set; }
         public virtual ICollection<Address> Address { get; set; }
