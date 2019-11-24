@@ -177,3 +177,102 @@ ALTER TABLE [User] ADD NormalizedEmail varchar(100) DEFAULT '';
 
 ALTER TABLE [User] ADD CONSTRAINT AK_User_NormalizedLogin UNIQUE(NormalizedLogin)
 ALTER TABLE [User] ADD CONSTRAINT AK_User_NormalizedEmail UNIQUE(NormalizedEmail)
+
+
+CREATE TABLE dbo.Provider (
+	Id uniqueidentifier NOT NULL PRIMARY KEY,
+	Name varchar(200) NOT NULL UNIQUE
+);
+
+CREATE TABLE dbo.Publisher (
+	Id uniqueidentifier NOT NULL PRIMARY KEY,
+	Name varchar(200) NOT NULL UNIQUE
+);
+
+CREATE TABLE dbo.Book (
+	Id uniqueidentifier PRIMARY KEY NOT NULL,
+	LiteraryWorkFk uniqueidentifier FOREIGN KEY REFERENCES LiteraryWork(Id) NOT NULL,
+	PublisherFk uniqueidentifier FOREIGN KEY REFERENCES Publisher(Id) NOT NULL,
+	PageAmount integer NOT NULL,
+	Size varchar(10) NOT NULL,
+	Price decimal NOT NULL,
+	Created datetime not null DEFAULT GETDATE(),
+	Modified datetime not null DEFAULT GETDATE(),
+	UpdatedBy uniqueidentifier FOREIGN KEY REFERENCES [User](Id) NOT NULL
+);
+
+CREATE TABLE dbo.Item (
+	Id uniqueidentifier NOT NULL PRIMARY KEY,
+	Barcode varchar(200) NOT NULL UNIQUE,
+	BookFk uniqueidentifier FOREIGN KEY REFERENCES Book(Id) NOT NULL,
+	ProviderFk uniqueidentifier FOREIGN KEY REFERENCES Provider(Id) NOT NULL,
+	Created datetime not null DEFAULT GETDATE(),
+	Modified datetime not null DEFAULT GETDATE(),
+	UpdatedBy uniqueidentifier FOREIGN KEY REFERENCES [User](Id) NOT NULL
+);
+
+CREATE TABLE dbo.OperationType (
+	Id uniqueidentifier PRIMARY KEY NOT NULL,
+	Name varchar(50) NOT NULL,
+	Code varchar(20) UNIQUE NOT NULL
+);
+
+CREATE TABLE dbo.Notification (
+	Id uniqueidentifier PRIMARY KEY NOT NULL,
+	UserFk uniqueidentifier FOREIGN KEY REFERENCES [User](Id) NOT NULL,
+	OperationTypeFk uniqueidentifier FOREIGN KEY REFERENCES OperationType(Id) NOT NULL,
+	Message nvarchar(max) NOT NULL,
+	Created datetime NOT NULL DEFAULT GETDATE(),
+	Modified datetime NOT NULL DEFAULT GETDATE()
+);
+
+
+
+CREATE TABLE dbo.PaymentMethod (
+	Id uniqueidentifier PRIMARY KEY NOT NULL,
+	Name varchar(50) NOT NULL,
+	Code varchar(50) UNIQUE NOT NULL
+);
+
+CREATE TABLE dbo.PaymentStatus (
+	Id uniqueidentifier PRIMARY KEY NOT NULL,
+	Name varchar(20) NOT NULL,
+	Code varchar(20) UNIQUE NOT NULL
+);
+
+CREATE TABLE dbo.Payment (
+	Id uniqueidentifier PRIMARY KEY NOT NULL,
+	UserFk uniqueidentifier FOREIGN KEY REFERENCES [User](Id) NOT NULL,
+	PaymentMethodFk uniqueidentifier FOREIGN KEY REFERENCES PaymentMethod(Id) NOT NULL,
+	PaymentStatusFk uniqueidentifier FOREIGN KEY REFERENCES PaymentStatus(Id) NOT NULL,
+	Amount decimal NOT NULL DEFAULT 0,
+	Created datetime NOT NULL DEFAULT GETDATE(),
+	Modified datetime NOT NULL DEFAULT GETDATE()
+);
+
+CREATE TABLE dbo.Basket (
+	Id uniqueidentifier PRIMARY KEY NOT NULL,
+	UserFk uniqueidentifier FOREIGN KEY REFERENCES [User](Id) NOT NULL,
+	PaymentFk uniqueidentifier FOREIGN KEY REFERENCES Payment(Id),
+	Price decimal NOT NULL DEFAULT 0,
+	IsPaid bit NOT NULL DEFAULT 0,
+	Created datetime NOT NULL DEFAULT GETDATE(),
+	Modified datetime NOT NULL DEFAULT GETDATE(),
+	IsActive bit NOT NULL DEFAULT 1,
+	IsDeleted bit NOT NULL DEFAULT 0
+);
+
+CREATE TABLE dbo.Purchase (
+	Id uniqueidentifier PRIMARY KEY NOT NULL,
+	UserFk uniqueidentifier FOREIGN KEY REFERENCES [User](Id) NOT NULL,
+	BasketFk uniqueidentifier FOREIGN KEY REFERENCES Basket(Id) NOT NULL,
+	ItemFk uniqueidentifier FOREIGN KEY REFERENCES Item(Id) NOT NULL,
+	Created datetime NOT NULL DEFAULT GETDATE(),
+	Modified datetime NOT NULL DEFAULT GETDATE(),
+	IsActive bit NOT NULL DEFAULT 1,
+	IsDeleted bit NOT NULL DEFAULT 0
+);
+
+
+
+
