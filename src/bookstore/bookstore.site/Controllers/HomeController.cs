@@ -39,7 +39,7 @@ namespace bookstore.site.Controllers
 
             var a2 = signInManager.IsSignedIn(User);*/
 
-            authOperation.Test();
+            authOperation.Create();
 
             return View();
         }

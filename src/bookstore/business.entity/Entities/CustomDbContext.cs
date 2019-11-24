@@ -243,7 +243,7 @@ namespace business.entity.Entities
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(getdate())");
 
-                entity.Property(e => e.Password)
+                entity.Property(e => e.PasswordHash)
                     .IsRequired()
                     .HasMaxLength(100)
                     .IsUnicode(false);

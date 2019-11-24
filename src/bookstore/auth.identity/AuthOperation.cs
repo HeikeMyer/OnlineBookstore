@@ -24,13 +24,13 @@ namespace auth.identity
         {
             var dto = new IdentityDto
             {
-                Login = "heike.myer",
-                Email = "abcd832@gmail.com",
-                FirstName = "Heike",
-                SecondName = "Myer"
+                Login = "cat.cat999",
+                Email = "cattt888@gmail.com",
+                FirstName = "Cat",
+                SecondName = "Fluffy"
             };
 
-            var a = UserManager.CreateAsync(dto, "ptktYsq678_Kbcn");
+            var a = UserManager.CreateAsync(dto, "fsdd88koo0_Kbcn");
             var b = a.Result;
         }
 

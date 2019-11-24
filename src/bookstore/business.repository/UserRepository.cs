@@ -23,7 +23,7 @@ namespace business.repository
 
         public IUser GetObject(string login, string passwordHash)
         {
-            return EntityContext.User.SingleOrDefault(user => user.Login == login && user.Password == passwordHash);
+            return EntityContext.User.SingleOrDefault(user => user.Login == login && user.PasswordHash == passwordHash);
         }
 
         public IUser Create(string login, string password, string email, string phoneNumber = null, string firstName = null, string secondName = null)
@@ -32,7 +32,7 @@ namespace business.repository
             {
                 Id = Guid.NewGuid(),
                 Login = login,
-                Password = password,
+                PasswordHash = password,
                 Email = email,
                 PhoneNumber = phoneNumber,
                 FirstName = firstName,

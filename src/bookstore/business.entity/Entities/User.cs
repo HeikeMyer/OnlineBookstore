@@ -13,7 +13,7 @@ namespace business.entity.Entities
 
         public Guid Id { get; set; }
         public string Login { get; set; }
-        public string Password { get; set; }
+        public string PasswordHash { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public string FirstName { get; set; }

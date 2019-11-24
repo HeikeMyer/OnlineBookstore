@@ -107,13 +107,13 @@ namespace auth.identity
 
         public Task SetNormalizedEmailAsync(IdentityDto identityDto, string normalizedEmail, CancellationToken cancellationToken)
         {
-            identityDto.Email = normalizedEmail;
+            //identityDto.Email = normalizedEmail;
             return DefaultResult;
         }
 
         public Task SetNormalizedUserNameAsync(IdentityDto identityDto, string normalizedName, CancellationToken cancellationToken)
         {
-            identityDto.Login = normalizedName;
+            //identityDto.Login = normalizedName;
             return DefaultResult;
         }
 

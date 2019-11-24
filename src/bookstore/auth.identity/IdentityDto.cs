@@ -20,7 +20,7 @@ namespace auth.identity
         {
             UserId = user.Id;
             Login = user.Login;
-            PasswordHash = user.Password;
+            PasswordHash = user.PasswordHash;
             Email = user.Email;
             PhoneNumber = user.PhoneNumber;
             FirstName = user.FirstName;

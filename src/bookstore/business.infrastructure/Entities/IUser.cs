@@ -6,7 +6,7 @@ namespace business.infrastructure.Entities
     {
         Guid Id { get; set; }
         string Login { get; set; }
-        string Password { get; set; }
+        string PasswordHash { get; set; }
         string Email { get; set; }
         string PhoneNumber { get; set; }
         string FirstName { get; set; }
