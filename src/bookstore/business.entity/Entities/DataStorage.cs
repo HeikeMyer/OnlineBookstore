@@ -7,6 +7,7 @@ namespace business.entity.Entities
     {
         public DataStorage()
         {
+            Book = new HashSet<Book>();
             LiteraryWorkSummary = new HashSet<LiteraryWorkSummary>();
         }
 
@@ -14,6 +15,7 @@ namespace business.entity.Entities
         public byte[] Data { get; set; }
         public bool IsDeleted { get; set; }
 
+        public virtual ICollection<Book> Book { get; set; }
         public virtual ICollection<LiteraryWorkSummary> LiteraryWorkSummary { get; set; }
     }
 }

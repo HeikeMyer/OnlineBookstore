@@ -10,21 +10,21 @@ namespace business.entity.Entities
             Book = new HashSet<Book>();
             LiteraryWorkAuthor = new HashSet<LiteraryWorkAuthor>();
             LiteraryWorkGenre = new HashSet<LiteraryWorkGenre>();
+            LiteraryWorkSummary = new HashSet<LiteraryWorkSummary>();
         }
 
         public Guid Id { get; set; }
         public string Name { get; set; }
         public int? YearWritten { get; set; }
-        public Guid? LiteraryWorkSummaryFk { get; set; }
         public DateTime Created { get; set; }
         public DateTime Updated { get; set; }
         public Guid UpdatedBy { get; set; }
         public bool IsDeleted { get; set; }
 
-        public virtual LiteraryWorkSummary LiteraryWorkSummaryFkNavigation { get; set; }
         public virtual User UpdatedByNavigation { get; set; }
         public virtual ICollection<Book> Book { get; set; }
         public virtual ICollection<LiteraryWorkAuthor> LiteraryWorkAuthor { get; set; }
         public virtual ICollection<LiteraryWorkGenre> LiteraryWorkGenre { get; set; }
+        public virtual ICollection<LiteraryWorkSummary> LiteraryWorkSummary { get; set; }
     }
 }

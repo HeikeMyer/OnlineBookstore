@@ -21,7 +21,9 @@ namespace business.entity.Entities
         public Guid UpdatedBy { get; set; }
         public bool IsSoldOut { get; set; }
         public bool IsDeleted { get; set; }
+        public Guid? DataStorageFk { get; set; }
 
+        public virtual DataStorage DataStorageFkNavigation { get; set; }
         public virtual LiteraryWork LiteraryWorkFkNavigation { get; set; }
         public virtual Publisher PublisherFkNavigation { get; set; }
         public virtual User UpdatedByNavigation { get; set; }

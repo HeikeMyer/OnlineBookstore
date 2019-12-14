@@ -169,6 +169,11 @@ namespace business.entity.Entities
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(getdate())");
 
+                entity.HasOne(d => d.DataStorageFkNavigation)
+                    .WithMany(p => p.Book)
+                    .HasForeignKey(d => d.DataStorageFk)
+                    .HasConstraintName("FK__Book__DataStorag__4E53A1AA");
+
                 entity.HasOne(d => d.LiteraryWorkFkNavigation)
                     .WithMany(p => p.Book)
                     .HasForeignKey(d => d.LiteraryWorkFk)
@@ -338,11 +343,6 @@ namespace business.entity.Entities
                     .HasColumnType("datetime")
                     .HasDefaultValueSql("(getdate())");
 
-                entity.HasOne(d => d.LiteraryWorkSummaryFkNavigation)
-                    .WithMany(p => p.LiteraryWork)
-                    .HasForeignKey(d => d.LiteraryWorkSummaryFk)
-                    .HasConstraintName("FK__LiteraryW__Liter__6EF57B66");
-
                 entity.HasOne(d => d.UpdatedByNavigation)
                     .WithMany(p => p.LiteraryWork)
                     .HasForeignKey(d => d.UpdatedBy)
@@ -421,6 +421,12 @@ namespace business.entity.Entities
                     .HasForeignKey(d => d.LanguageFk)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__LiteraryW__Langu__6754599E");
+
+                entity.HasOne(d => d.LiteraryWorkFkNavigation)
+                    .WithMany(p => p.LiteraryWorkSummary)
+                    .HasForeignKey(d => d.LiteraryWorkFk)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK__LiteraryW__Liter__4D5F7D71");
 
                 entity.HasOne(d => d.UpdatedByNavigation)
                     .WithMany(p => p.LiteraryWorkSummary)
