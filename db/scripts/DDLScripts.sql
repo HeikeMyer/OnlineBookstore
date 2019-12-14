@@ -250,3 +250,21 @@ CREATE TABLE [dbo].[Purchase]
 	[IsActive] bit NOT NULL DEFAULT 1,
 	[IsDeleted] bit NOT NULL DEFAULT 0
 );
+
+ALTER TABLE [dbo].[LiteraryWork]   
+DROP CONSTRAINT [FK__LiteraryW__Liter__6EF57B66]
+
+ALTER TABLE [dbo].[LiteraryWork] 
+DROP COLUMN [LiteraryWorkSummaryFk]
+
+ALTER TABLE [dbo].[LiteraryWorkSummary]
+ADD [LiteraryWorkFk] uniqueidentifier not null
+
+ALTER TABLE [dbo].[LiteraryWorkSummary]
+ADD FOREIGN KEY ([LiteraryWorkFk]) REFERENCES [dbo].[LiteraryWork]([Id]);
+
+ALTER TABLE [dbo].[Book]
+ADD [DataStorageFk] uniqueidentifier
+
+ALTER TABLE [dbo].[Book]
+ADD FOREIGN KEY ([DataStorageFk]) REFERENCES [dbo].[DataStorage]([Id]);
