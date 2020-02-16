@@ -26,7 +26,7 @@ namespace bookstore.site.Controllers
 
         public IActionResult Index()
         {            
-            _authOperation.Create("user_test", "test@test.com", "jajdal776_UKna", firstName:"Test", secondName:"TeEEst");
+            //_authOperation.Create("user_test", "test@test.com", "jajdal776_UKna", firstName:"Test", secondName:"TeEEst");
 
             return View();
         }

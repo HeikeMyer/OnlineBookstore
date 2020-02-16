@@ -11,6 +11,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using auth.identity;
 using bookstore.site.Extensions;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ApplicationParts;
+using System.IO;
+using System.Reflection;
 
 namespace bookstore.site
 {
@@ -32,8 +36,35 @@ namespace bookstore.site
 
             services.AddAuth();
 
-            services.AddControllersWithViews();
-            services.AddRazorPages();
+            //services.AddMvc();
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .ConfigureApplicationPartManager(ConfigureApplicationParts);
+            //services.AddControllersWithViews();
+            //services.AddRazorPages();
+        }
+
+        private void ConfigureApplicationParts(ApplicationPartManager apm)
+        {
+            var rootPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+
+            var assemblyFiles = Directory.GetFiles(rootPath, "*.dll");
+            foreach (var assemblyFile in assemblyFiles)
+            {
+                try
+                {
+                    var assembly = Assembly.LoadFile(assemblyFile);
+                    if (assemblyFile.EndsWith(this.GetType().Namespace + ".Views.dll") || assemblyFile.EndsWith(this.GetType().Namespace + ".dll"))
+                        continue;
+                    else if (assemblyFile.EndsWith(".Views.dll"))
+                        apm.ApplicationParts.Add(new CompiledRazorAssemblyPart(assembly));
+                    //else
+                    //    apm.ApplicationParts.Add(new AssemblyPart(assembly));
+                }
+                catch (Exception e) 
+                {
+                    var a = 56;
+                }
+            }
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
