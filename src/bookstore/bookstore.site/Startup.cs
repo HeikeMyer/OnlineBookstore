@@ -37,8 +37,10 @@ namespace bookstore.site
             services.AddAuth();
 
             //services.AddMvc();
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
-                .ConfigureApplicationPartManager(ConfigureApplicationParts);
+            services.AddMvc();
+                
+                //.SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                //.ConfigureApplicationPartManager(ConfigureApplicationParts);
             //services.AddControllersWithViews();
             //services.AddRazorPages();
         }
