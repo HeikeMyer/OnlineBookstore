@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using bookstore.site.Models;
-using auth.identity.Interfaces;
+//using auth.identity.Interfaces;
 using business.infrastructure.Repositories;
 using Microsoft.AspNetCore.Identity;
 using mvc.core;
@@ -16,12 +16,12 @@ namespace bookstore.site.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IAuthOperation _authOperation;
+        //private readonly IAuthOperation _authOperation;
 
-        public HomeController(ILogger<HomeController> logger, IAuthOperation authOperation)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            _authOperation = authOperation;
+            //_authOperation = authOperation;
         }
 
         public IActionResult Index()

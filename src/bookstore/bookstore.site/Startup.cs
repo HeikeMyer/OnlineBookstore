@@ -9,12 +9,14 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using auth.identity;
+//using auth.identity;
 using bookstore.site.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using System.IO;
 using System.Reflection;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
 
 namespace bookstore.site
 {
@@ -34,7 +36,16 @@ namespace bookstore.site
             services.AddRepositoryService();
             services.AddOperationService();
 
-            services.AddAuth();
+            //services.AddAuth();
+
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                // This lambda determines whether user consent for non-essential cookies is needed for a given request.  
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 
             //services.AddMvc();
             services.AddMvc();
@@ -45,30 +56,7 @@ namespace bookstore.site
             //services.AddRazorPages();
         }
 
-        private void ConfigureApplicationParts(ApplicationPartManager apm)
-        {
-            var rootPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-
-            var assemblyFiles = Directory.GetFiles(rootPath, "*.dll");
-            foreach (var assemblyFile in assemblyFiles)
-            {
-                try
-                {
-                    var assembly = Assembly.LoadFile(assemblyFile);
-                    if (assemblyFile.EndsWith(this.GetType().Namespace + ".Views.dll") || assemblyFile.EndsWith(this.GetType().Namespace + ".dll"))
-                        continue;
-                    else if (assemblyFile.EndsWith(".Views.dll"))
-                        apm.ApplicationParts.Add(new CompiledRazorAssemblyPart(assembly));
-                    //else
-                    //    apm.ApplicationParts.Add(new AssemblyPart(assembly));
-                }
-                catch (Exception e) 
-                {
-                    var a = 56;
-                }
-            }
-        }
-
+      
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -87,14 +75,15 @@ namespace bookstore.site
 
             app.UseRouting();
 
+            app.UseCookiePolicy();
             app.UseAuthentication();
-            app.UseAuthorization();
+            //app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=SignIn}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }

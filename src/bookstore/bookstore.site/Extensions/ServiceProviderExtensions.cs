@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
-using auth.identity.Base;
-using auth.identity.Interfaces;
-using auth.identity.Operations;
+//using auth.identity.Base;
+//using auth.identity.Interfaces;
+//using auth.identity.Operations;
 using business.entity;
 using business.infrastructure.Operations;
 using business.infrastructure.Repositories;
@@ -21,10 +21,10 @@ namespace bookstore.site.Extensions
 
         public static void AddAuth(this IServiceCollection services)
         {
-            services.AddIdentity<IdentityDto, RoleDto>().AddDefaultTokenProviders();
-            services.AddTransient<IUserStore<IdentityDto>, UserStore>();
-            services.AddTransient<IRoleStore<RoleDto>, RoleStore>();
-            services.AddTransient<IAuthOperation, AuthOperation>();
+            //services.AddIdentity<IdentityDto, RoleDto>().AddDefaultTokenProviders();
+            //services.AddTransient<IUserStore<IdentityDto>, UserStore>();
+            //services.AddTransient<IRoleStore<RoleDto>, RoleStore>();
+            //services.AddTransient<IAuthOperation, AuthOperation>();
         }
 
         public static void AddRepositoryService(this IServiceCollection services)

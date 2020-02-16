@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
+    <ProjectReference Include="..\mvc.core\mvc.core.csproj" />
   </ItemGroup>
 
 

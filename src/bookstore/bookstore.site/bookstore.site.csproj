@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\auth.identity\auth.identity.csproj" />
     <ProjectReference Include="..\auth.site\auth.site.csproj" />
     <ProjectReference Include="..\business.entity\business.entity.csproj" />
     <ProjectReference Include="..\business.infrastructure\business.infrastructure.csproj" />
